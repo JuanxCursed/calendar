@@ -47,9 +47,9 @@
 		methods: {			
 			async getWeather() {
 				try {
-					const key = process.env.APIKEY
+					const key = process.env.APIKEY || this.key
 					const { data } = await this.$axios.get(
-						`https://api.openweathermap.org/data/2.5/weather?lat=${this.lat}&lon=${this.lon}&appid=${this.key}&units=metric`
+						`https://api.openweathermap.org/data/2.5/weather?lat=${this.lat}&lon=${this.lon}&appid=${key}&units=metric`
 					) // That should be in the providers/services, but let's do it this way just to be quicker
 					this.weather = data
           
