@@ -16,7 +16,9 @@ export default {
             { rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css', }
         ]
     },
-    css: [],
+    css: [
+        '~/assets/css/main.css',
+    ],
     plugins: [
         '~/plugins/vee-validate.js',
         '~/plugins/i18n.js',

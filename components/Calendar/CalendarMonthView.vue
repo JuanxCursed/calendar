@@ -21,6 +21,8 @@
 				:day="day.date"
 				:is-current-month="day.isCurrentMonth"
 				:is-today="day.date.format('L') === today.format('L')"
+				@selectedDate="showReminderForm"
+				:reminders="day.reminders"
 			/>
 		</ol>
 	</div>
@@ -33,6 +35,7 @@
 	import CalendarDateIndicator from './CalendarDateIndicator'
 	import CalendarDateSelector from './CalendarDateSelector'
 	import CalendarWeekdays from './CalendarWeekdays'
+	import Events from '../../constants/Events'
 
 	export default {
 		name: 'CalendarMonthView',
@@ -49,7 +52,12 @@
 				selectedDate: moment().startOf(Dates.DAY),
 			}
 		},
-
+		props: {
+			reminders: {
+				type: Array,
+				default: [],
+			},
+		},
 		computed: {
 			currentMonth() {
 				return moment().format('L')
@@ -71,18 +79,19 @@
 			days() {
 				const days = []
 				const firstDayToRender = moment(this.selectedDate)
-					.startOf('month')
-					.startOf('week')
+					.startOf(Dates.MONTH)
+					.startOf(Dates.WEEK)
 				const lastDayToRender = moment(this.selectedDate)
-					.endOf('month')
-					.endOf('week')
+					.endOf(Dates.MONTH)
+					.endOf(Dates.WEEK)
 
 				while (firstDayToRender <= lastDayToRender) {
 					days.push({
 						date: firstDayToRender.clone(),
 						isCurrentMonth: firstDayToRender.month() === this.month,
+						reminders: this.getRemindersForDay(firstDayToRender),
 					})
-					firstDayToRender.add(1, 'day')
+					firstDayToRender.add(1, Dates.DAY)
 				}
 
 				return days
@@ -92,6 +101,17 @@
 		methods: {
 			selectDate(SelectedDate) {
 				this.selectedDate = SelectedDate
+			},
+			showReminderForm(date) {
+				this.$emit(Events.SHOW_REMINDER_FORM, date)
+			},
+			hideReminderForm() {
+				this.$emit(Events.HIDE_REMINDER_FORM)
+			},
+			getRemindersForDay(day) {
+				return this.reminders.filter((reminder) => {
+					return moment(reminder.date).format('L') === day.format('L')
+				})
 			},
 		},
 	}

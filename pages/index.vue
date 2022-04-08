@@ -20,7 +20,8 @@
 	--grey-800: #3e4e63;
 	--text-color: #2c3e50;
 	--background-color: #fff;
-	--primary-background-color: rgb(108, 118, 159);
+	--primary-color: rgb(108, 118, 159);
+	--secundary-color: #3c8dbc;
 	--grid-gap: 1px;
 	--grid-padding: 10px;
 	--day-label-size: 20px;
@@ -31,7 +32,6 @@ body {
 	font-weight: 300;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	text-align: center;
 	color: var(--text-color);
 	margin-top: var(--grid-padding);
 }

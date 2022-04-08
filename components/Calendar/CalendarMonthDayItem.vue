@@ -1,26 +1,37 @@
 <template>
 	<li
-		@click="selectDate(date)"
+		@click="selectDate(day)"
 		class="calendar-day"
 		:class="{
 			'not-current': !isCurrentMonth,
 			today: isToday,
 		}"
 	>
-		<span>{{ day.date() }}</span>
+		<span class="date-label">{{ day.date() }}</span>
+		<reminder 
+			v-for="(reminder,i) in reminders"
+			:key="`${i}-${reminder.time}=${reminder.date}`"
+			:reminder="reminder"
+		></reminder>
 	</li>
 </template>
 
 <script>
 	import Events from '@/constants/Events'
+	import Reminder from './Reminder/Reminder.vue'
 
 	export default {
+		components: { Reminder },
 		name: 'CalendarMonthDayItem',
 
 		props: {
 			day: {
 				type: Object,
 				required: true,
+			},
+			reminders: {
+				type: Array,
+				default: [],
 			},
 			isCurrentMonth: {
 				type: Boolean,
@@ -49,11 +60,12 @@
 	padding: 5px;
 }
 
-.calendar-day > span {
+.calendar-day > .date-label {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	position: absolute;
+	font-size: 11px;
 	right: 2px;
 	width: var(--day-label-size);
 	height: var(--day-label-size);
@@ -68,10 +80,10 @@
 	padding-top: 4px;
 }
 
-.today > span {
+.today > .date-label {
 	color: var(--background-color);
 	font-weight: 600;
 	border-radius: 9999px;
-	background-color: var(--primary-background-color);
+	background-color: var(--primary-color);
 }
 </style>
