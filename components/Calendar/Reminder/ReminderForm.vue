@@ -66,14 +66,26 @@
 				type: String,
 				default: moment().format('YYYY-MM-DDTHH:mm'),
 			},
+			reminder: {
+				type: Object,
+				default: undefined,
+			},
 		},
 		mounted() {
 			this.model.date = this.date
+			if (this.reminder) {
+				this.model = this.reminder.copyWith()
+			}
 		},
 		methods: {
 			submit() {
 				const reminder = new ReminderModel(this.model)
-				this.$store.dispatch(Actions.REMINDER_CREATE, reminder)
+				this.reminder ?
+					this.$store.dispatch(Actions.REMINDER_UPDATE, {
+						before: this.reminder,
+						after: this.model,
+					}):
+					this.$store.dispatch(Actions.REMINDER_CREATE, reminder)
 				this.$emit(Events.CREATED_REMINDER, reminder)
 				this.close()
 			},

@@ -10,7 +10,7 @@ class Events {
     static CREATED_REMINDER = 'createdReminder';
     static DELETED_REMINDER = 'deletedReminder';
     static UPDATED_REMINDER = 'updatedReminder';
-    static SELECTED_REMINDER = 'selectedReminder';
+    static SELECTED_REMINDER = 'selectReminder';
 }
 
 export default Events

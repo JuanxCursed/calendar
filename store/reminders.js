@@ -27,9 +27,15 @@ export const actions = {
 
     CREATE({ commit }, payload) {
         validateModelType(payload);
-        const reminder = new ReminderModel(payload)
-        commit('ADD_REMINDER', reminder)
-        return reminder
+        commit('ADD_REMINDER', payload)
+        return payload
+    },
+
+    UPDATE({ commit, state }, { before, after }) {
+        validateModelType(after);
+        const _reminders = state.reminders.map(reminder => before.equals(reminder) ? after : reminder);
+        commit('SET_REMINDERS', _reminders)
+        return _reminders
     }
 }
 
