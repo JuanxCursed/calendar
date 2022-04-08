@@ -8,9 +8,9 @@
     </div>
     <div class="weather-description">
       <p>{{ date }}</p>
-      <h5>
+      <h5 v-if="weather.name">
         <i class="fa fa-map"></i>
-        {{ weather.name || 'En algun lugar de la tierra' }}
+        {{ weather.name }}
       </h5>
     </div>     
     <div class="weather-description-icon">
