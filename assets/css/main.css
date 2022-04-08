@@ -1,0 +1,184 @@
+/* I could use scss but since is a very small file, there is no point to do it.*/
+
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --grey-100: #e4e9f0;
+    --grey-200: #cfd7e3;
+    --grey-300: #b5c0cd;
+    --grey-800: #3e4e63;
+    --text-color: #2c3e50;
+    --background-color: #fff;
+    --primary-color: rgb(108, 118, 159);
+    --secundary-color: #3c8dbc;
+    --grid-gap: 1px;
+    --grid-padding: 10px;
+    --day-label-size: 20px;
+}
+
+body {
+    font-family: 'Poppins', 'Avenir', Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: var(--text-color);
+    margin-top: var(--grid-padding);
+}
+
+ol,
+li {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.modal {
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal .backdrop {
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-form {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: var(--grid-padding);
+    border-radius: var(--grid-padding);
+    background-color: var(--background-color);
+}
+
+.modal-form .modal-header {
+    background-color: #3c8dbc;
+    color: #fff;
+    text-align: center;
+}
+
+.modal-form .modal-header h3 {
+    font-weight: 500;
+}
+
+.modal-form .modal-body {
+    background-color: var(--secundary-color);
+    color: #fff;
+    text-align: center;
+}
+
+.modal-form .modal-footer {
+    margin: 10px auto;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+}
+
+form label {
+    font-weight: 500;
+    font-size: 14px;
+    margin-bottom: 0;
+}
+
+.base-input {
+    margin-bottom: var(--grid-padding);
+}
+
+input,
+textarea {
+    width: 100%;
+    display: block;
+    border: 1px solid #ccc;
+    max-width: 100%;
+    border-radius: var(--grid-padding);
+    padding: var(--grid-padding);
+    background-color: var(--background-color);
+}
+
+input:active.input:focus,
+input:focus-visible,
+textarea:active.input:focus,
+textarea:focus-visible {
+    border: 1px solid #3c8dbc;
+    background-color: var(--background-color);
+    outline: none;
+}
+
+input[type="color" i] {
+    padding: 0;
+}
+
+input[type="color"]::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+
+input[type="color"]::-webkit-color-swatch {
+    border-radius: var(--grid-padding);
+    border: none;
+}
+
+button {
+    padding: 10px 15px;
+    font-size: 16px;
+    background-color: var(--secundary-color);
+    border-radius: var(--grid-padding);
+    color: var(--background-color);
+    border: 0;
+    cursor: pointer;
+}
+
+button.secundary {
+    background-color: var(--background-color);
+    color: var(--secundary-color);
+    border: 1px solid var(--secundary-color);
+}
+
+button.icon {
+    font-size: 10px;
+    padding: 7px;
+    border: 0;
+    border-radius: 100%;
+}
+
+.has-danger {
+    color: red;
+}
+
+.error {
+    font-size: 13px;
+    color: red;
+}
+
+.icon.error {
+    background-color: red;
+    color: #fff;
+}
+
+.large>i {
+    font-size: 16px;
+    padding: 5px;
+}
