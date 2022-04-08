@@ -4,6 +4,9 @@
 		<form @submit.prevent="submit" class="modal-form">
 			<div class="modal-header">
 				<h3>{{ $t('reminder.new') }}</h3>
+				<button class="delete-reminder icon error large pull-right" @click="deleteReminder">
+					<i class="fa fa-trash"></i>
+				</button>
 			</div>
 			<base-input
 				v-model="model.city"
@@ -33,7 +36,7 @@
 			<div class="modal-footer">
 				<button @click="close" class="secundary">
 					{{ $t('form.cancel') }}
-				</button>
+				</button>				
 				<button type="submit">{{ $t('form.save') }}</button>
 			</div>
 		</form>
@@ -89,9 +92,25 @@
 				this.$emit(Events.CREATED_REMINDER, reminder)
 				this.close()
 			},
+			deleteReminder(){
+				const reminder = new ReminderModel(this.model)
+				this.$store.dispatch(Actions.REMINDER_DELETE, reminder)
+				this.$emit(Events.CREATED_REMINDER, reminder)
+				this.close()
+			},
 			close() {
 				this.$emit(Events.CLOSE)
 			},
 		},
 	}
 </script>
+<style scoped>
+.modal-header{
+	position: relative;
+}
+.delete-reminder{
+	position: absolute;
+	top: calc(50% - 20px);
+	right: 10px;
+}
+</style>

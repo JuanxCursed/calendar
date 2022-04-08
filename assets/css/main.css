@@ -34,14 +34,6 @@ li {
     list-style: none;
 }
 
-.has-danger {
-    color: red;
-}
-
-.error {
-    font-size: 13px;
-}
-
 .modal {
     position: fixed;
     z-index: 1;
@@ -170,4 +162,23 @@ button.icon {
     padding: 7px;
     border: 0;
     border-radius: 100%;
+}
+
+.has-danger {
+    color: red;
+}
+
+.error {
+    font-size: 13px;
+    color: red;
+}
+
+.icon.error {
+    background-color: red;
+    color: #fff;
+}
+
+.large>i {
+    font-size: 16px;
+    padding: 5px;
 }
