@@ -5,6 +5,7 @@
 				:selected-date="selectedDate"
 				class="calendar-month-header-selected-month"
 			/>
+			<weather />
 			<calendar-date-selector
 				:current-date="currentMonth"
 				:selected-date="selectedDate"
@@ -36,6 +37,7 @@
 	import CalendarDateIndicator from './CalendarDateIndicator'
 	import CalendarDateSelector from './CalendarDateSelector'
 	import CalendarWeekdays from './CalendarWeekdays'
+	import Weather from './Weather/Weather.vue'
 	import Events from '@/constants/Events'
 
 	export default {
@@ -46,6 +48,7 @@
 			CalendarDateIndicator,
 			CalendarDateSelector,
 			CalendarWeekdays,
+			Weather,
 		},
 
 		data() {
@@ -163,5 +166,12 @@
 	grid-column-gap: var(--grid-gap);
 	grid-row-gap: var(--grid-gap);
 	border-top: solid 1px var(--grey-200);
+}
+
+@media screen and (max-width: 768px) {
+	.calendar-month-header {
+		display: flex;
+		flex-direction: column;
+	}	
 }
 </style>

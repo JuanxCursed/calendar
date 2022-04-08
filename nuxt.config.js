@@ -33,10 +33,12 @@ export default {
     },
     buildModules: [],
     modules: [
+        '@nuxtjs/axios',
         '@nuxtjs/moment',
-        '@nuxtjs/pwa',
         '@nuxtjs/i18n',
+        '@nuxtjs/pwa',
     ],
+    axios: {},
     moment: {
         defaultLocale: process.env.DEFAULT_LOCALE || 'pt-br',
         locales: ['pt-br'],
@@ -46,23 +48,23 @@ export default {
     i18n: {
         baseUrl: process.env.APP_BASE_URL || 'localhost',
         locales: [{
-            code: 'pt',
-            iso: 'pt-BR',
-            file: 'pt.js',
-            name: 'Português',
-        },
-        {
-            code: 'es',
-            iso: 'es-ES',
-            file: 'es.js',
-            name: 'Español',
-        },
-        {
-            code: 'en',
-            iso: 'en-US',
-            file: 'en.js',
-            name: 'English',
-        }
+                code: 'pt',
+                iso: 'pt-BR',
+                file: 'pt.js',
+                name: 'Português',
+            },
+            {
+                code: 'es',
+                iso: 'es-ES',
+                file: 'es.js',
+                name: 'Español',
+            },
+            {
+                code: 'en',
+                iso: 'en-US',
+                file: 'en.js',
+                name: 'English',
+            }
         ],
         lazy: true,
         langDir: 'lang/',

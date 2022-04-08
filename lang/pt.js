@@ -1,4 +1,4 @@
-export default async (context, locale) => {
+export default async(context, locale) => {
     return {
         "app": {
             "name": process.env.APP_NAME,
@@ -30,6 +30,22 @@ export default async (context, locale) => {
         },
         "reminder": {
             "new": "Novo lembrete",
+        },
+        "weather": {
+            "temperature": "Temperatura",
+            "sunny": "Ensolarado",
+            "low_cloudy": "Poucas nuvens",
+            "disperses_cloudy": "Nuvens dispersas",
+            "cloudyDart": "Nuvens escuras",
+            "rainy": "Chuva",
+            "rainy": "Chuva",
+            "storm": "Tempestade",
+            "flurries": "Neve",
+            "fog": "Neblina",
+            "sunrise": "Amanhecer",
+            "sunset": "Pôr do sol",
+            "min": "Min",
+            "max": "Máx",
         }
     }
 }

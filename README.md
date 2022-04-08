@@ -29,8 +29,8 @@ $ yarn generate
 - [x] Functionality to delete one or ALL the reminders for a specific day
 - [x] Localization (en,es,pt)
 - [x] PWA
-- [ ] Add a weather service call from a free API such as Open Weather Map, and get the weather forecast (ex. Rain) for the date of the calendar reminder based on the city.
-- [ ] Unit tests
+- [x] Add a weather service call from a free API such as Open Weather Map, and get the weather forecast (ex. Rain) for the date of the calendar reminder based on the city.
+- [x] Unit tests
 
 ## Archtheture edtails
 
