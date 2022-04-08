@@ -6,9 +6,9 @@
 				class="calendar-month-header-selected-month"
 			/>
 			<calendar-date-selector
-				:current-date="today"
+				:current-date="currentMonth"
 				:selected-date="selectedDate"
-				@dateSelected="selectDate"
+				@changedDate="selectDate"
 			/>
 		</div>
 
@@ -20,7 +20,7 @@
 				:key="`day-${i}`"
 				:day="day.date"
 				:is-current-month="day.isCurrentMonth"
-				:is-today="day.date === today"
+				:is-today="day.date.format('L') === today.format('L')"
 			/>
 		</ol>
 	</div>
@@ -28,6 +28,7 @@
 
 <script>
 	import moment from 'moment'
+	import Dates from '@/constants/Dates'
 	import CalendarMonthDayItem from './CalendarMonthDayItem'
 	import CalendarDateIndicator from './CalendarDateIndicator'
 	import CalendarDateSelector from './CalendarDateSelector'
@@ -45,15 +46,17 @@
 
 		data() {
 			return {
-				selectedDate: moment().startOf('day'),
+				selectedDate: moment().startOf(Dates.DAY),
 			}
 		},
 
 		computed: {
-			today() {
+			currentMonth() {
 				return moment().format('L')
 			},
-
+			today() {
+				return moment().startOf(Dates.DAY)
+			},
 			month() {
 				return this.selectedDate.month()
 			},
@@ -67,9 +70,12 @@
 			},
 			days() {
 				const days = []
-				const firstDayToRender = moment(this.selectedDate).startOf('month').startOf('week')
-				console.log(firstDayToRender);
-				const lastDayToRender = moment(this.selectedDate).endOf('month').endOf('week')
+				const firstDayToRender = moment(this.selectedDate)
+					.startOf('month')
+					.startOf('week')
+				const lastDayToRender = moment(this.selectedDate)
+					.endOf('month')
+					.endOf('week')
 
 				while (firstDayToRender <= lastDayToRender) {
 					days.push({

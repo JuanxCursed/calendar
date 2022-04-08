@@ -8,38 +8,36 @@
 
 <script>
 	import moment from 'moment'
+	import Dates from '@/constants/Dates'
+	import Events from '@/constants/Events'
 
 	const DATE_SELECTED = 'dateSelected'
 
 	export default {
 		name: 'CalendarModeSelector',
-
 		props: {
-			currentDate: {
-				type: String,
-				required: true,
-			},
-
 			selectedDate: {
 				type: Object,
 				required: true,
 			},
 		},
-
 		methods: {
 			selectPrevious() {
-				let newSelectedDate = new moment(this.selectedDate).subtract(1, 'months')
-				this.$emit(DATE_SELECTED, newSelectedDate)
+				let newSelectedDate = new moment(this.selectedDate).subtract(
+					1,
+					Dates.MONTHS
+				)
+				this.$emit(Events.CHANGED_DATE, newSelectedDate)
 			},
 
 			selectCurrent() {
 				let newSelectedDate = new moment()
-				this.$emit(DATE_SELECTED, newSelectedDate)
+				this.$emit(Events.CHANGED_DATE, newSelectedDate)
 			},
 
 			selectNext() {
-				let newSelectedDate = new moment(this.selectedDate).add(1, 'months')
-				this.$emit(DATE_SELECTED, newSelectedDate)
+				let newSelectedDate = new moment(this.selectedDate).add(1, Dates.MONTHS)
+				this.$emit(Events.CHANGED_DATE, newSelectedDate)
 			},
 		},
 	}
