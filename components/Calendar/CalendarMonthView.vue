@@ -21,6 +21,8 @@
 				:day="day.date"
 				:is-current-month="day.isCurrentMonth"
 				:is-today="day.date.format('L') === today.format('L')"
+				@selectedDate="showReminderForm"
+				:reminders="day.reminders"
 			/>
 		</ol>
 	</div>
@@ -33,6 +35,7 @@
 	import CalendarDateIndicator from './CalendarDateIndicator'
 	import CalendarDateSelector from './CalendarDateSelector'
 	import CalendarWeekdays from './CalendarWeekdays'
+	import Events from '@/constants/Events'
 
 	export default {
 		name: 'CalendarMonthView',
@@ -49,7 +52,12 @@
 				selectedDate: moment().startOf(Dates.DAY),
 			}
 		},
-
+		props: {
+			reminders: {
+				type: Array,
+				default: [],
+			},
+		},
 		computed: {
 			currentMonth() {
 				return moment().format('L')
@@ -71,18 +79,19 @@
 			days() {
 				const days = []
 				const firstDayToRender = moment(this.selectedDate)
-					.startOf('month')
-					.startOf('week')
+					.startOf(Dates.MONTH)
+					.startOf(Dates.WEEK)
 				const lastDayToRender = moment(this.selectedDate)
-					.endOf('month')
-					.endOf('week')
+					.endOf(Dates.MONTH)
+					.endOf(Dates.WEEK)
 
 				while (firstDayToRender <= lastDayToRender) {
 					days.push({
 						date: firstDayToRender.clone(),
 						isCurrentMonth: firstDayToRender.month() === this.month,
+						reminders: this.getRemindersForDay(firstDayToRender),
 					})
-					firstDayToRender.add(1, 'day')
+					firstDayToRender.add(1, Dates.DAY)
 				}
 
 				return days
@@ -93,11 +102,29 @@
 			selectDate(SelectedDate) {
 				this.selectedDate = SelectedDate
 			},
+			showReminderForm(date) {
+				this.$emit(Events.SHOW_REMINDER_FORM, date)
+			},
+			hideReminderForm() {
+				this.$emit(Events.HIDE_REMINDER_FORM)
+			},
+			getRemindersForDay(day) {
+				return this.reminders
+					.sort((a, b) => moment(a.date) - moment( b.date))
+					.filter((reminder) => moment(reminder.date).format('L') === day.format('L'))
+			},
 		},
 	}
 </script>
 
 <style scoped>
+.calendar-month-header {
+	display: flex;
+	justify-content: space-between;
+	background-color: var(--background-color);
+	padding: var(--grid-padding);
+}
+
 .calendar-month {
 	position: relative;
 	background-color: var(--grey-200);
@@ -115,7 +142,7 @@
 .day-of-week,
 .days-grid {
 	display: grid;
-	grid-template-columns: repeat(7, 1fr);
+	grid-template-columns: repeat(7, minmax(0, 1fr));
 	padding: var(--grid-padding);
 }
 

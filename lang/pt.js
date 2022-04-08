@@ -1,4 +1,4 @@
-export default async(context, locale) => {
+export default async (context, locale) => {
     return {
         "app": {
             "name": process.env.APP_NAME,
@@ -15,7 +15,21 @@ export default async(context, locale) => {
                 'next': 'Próximo >',
                 'prev': '< Anterior'
             }
+        },
+        "form": {
+            "name": "Lembrete",
+            "city": "Cidade",
+            "date": "Dia",
+            "time": "Hora",
+            "color": "Cor",
+            "save": "Salvar",
+            "cancel": "Cancelar",
+        },
+        "validation": {
+            "required": "Este campo é obrigatório",
+        },
+        "reminder": {
+            "new": "Novo lembrete",
         }
-
     }
 }
