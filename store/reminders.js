@@ -36,6 +36,13 @@ export const actions = {
         const _reminders = state.reminders.map(reminder => before.equals(reminder) ? after : reminder);
         commit('SET_REMINDERS', _reminders)
         return _reminders
+    },
+
+    DELETE({ commit, state }, payload) {
+        validateModelType(payload);
+        const _reminders = state.reminders.filter(reminder => !new ReminderModel(reminder).equals(payload));
+        commit('SET_REMINDERS', _reminders)
+        return _reminders
     }
 }
 
