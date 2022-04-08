@@ -76,6 +76,9 @@
 				this.$emit(Events.INPUT, evt.target.value)
 			},
 			onFocus(evt) {
+				if (this.$refs.input.getAttribute("type") === "datetime-local") {
+					this.$refs.input.showPicker();
+			  }
 				this.focused = true
 				this.$emit(Events.FOCUS, evt)
 			},

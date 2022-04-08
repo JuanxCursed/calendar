@@ -6,7 +6,7 @@
 			'color': calculateContrastColor(reminder.color),
 		}"
 	>
-		<small>{{ reminder.time }}</small> - {{ reminder.name }}
+		<span class="time">{{ reminder.time }}</span> {{ reminder.name }}
 	</span>
 </template>
 
@@ -45,5 +45,12 @@ import ReminderModel from '@/models/ReminderModel'
 	white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+.reminder + .reminder {
+	margin-top: 2px;
+}
+.reminder > .time{
+	font-weight: 700;
+	font-size: 10px;
 }
 </style>

@@ -5,7 +5,7 @@
 			:reminders="reminders"
 		></calendar-month-view>
 		<div v-if="mustShowReminderForm">
-			<reminder-form :date="selectedDate" @close="hideReminderForm" />
+			<reminder-form :date="selectedDate" @close="hideReminderForm" @createdReminder="getReminders" />
 		</div>
 	</div>
 </template>
@@ -36,18 +36,20 @@ import ReminderModel from '@/models/ReminderModel'
 			}
 		},
 		mounted(){
-			const {reminders} = this.$store.state.reminders
-			this.reminders = reminders.map(reminder => ReminderModel.fromJson(reminder))
+			this.getReminders()
 		},
 		methods: {
+			getReminders(){
+				const {reminders} = this.$store.state.reminders
+				this.reminders = reminders.map(reminder => ReminderModel.fromJson(reminder))
+			},
 			showReminderForm(date) {
-				this.selectedDate = date.format('YYYY-MM-DD')
+				this.selectedDate = date.format('YYYY-MM-DDTHH:mm')
 				this.mustShowReminderForm = true
 			},
-			hideReminderForm(date) {
+			hideReminderForm() {
 				this.selectedDate = moment()
 				this.mustShowReminderForm = false
-				this.$forceUpdate();
 			},
 		},
 	}

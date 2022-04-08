@@ -1,6 +1,5 @@
 <template>
-	<li
-		@click="selectDate(day)"
+	<li		
 		class="calendar-day"
 		:class="{
 			'not-current': !isCurrentMonth,
@@ -13,6 +12,9 @@
 			:key="`${i}-${reminder.time}=${reminder.date}`"
 			:reminder="reminder"
 		></reminder>
+		<button class="secundary icon new-reminder" @click="selectDate(day)">
+			<i class="fa fa-plus"></i>
+		</button>
 	</li>
 </template>
 
@@ -57,18 +59,22 @@
 	font-size: 16px;
 	background-color: var(--background-color);
 	color: var(--grey-800);
-	padding: 5px;
+	padding: 27px 5px 5px;
 }
 
 .calendar-day > .date-label {
+	position: absolute;
+	top: 2px;
+	right: 2px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	position: absolute;
 	font-size: 11px;
-	right: 2px;
 	width: var(--day-label-size);
 	height: var(--day-label-size);
+	background-color: var(--background-color);
+	border-radius: 100%;
 }
 
 .not-current {
@@ -76,14 +82,14 @@
 	color: var(--grey-300);
 }
 
-.today {
-	padding-top: 4px;
-}
-
 .today > .date-label {
 	color: var(--background-color);
 	font-weight: 600;
-	border-radius: 9999px;
 	background-color: var(--primary-color);
+}
+.new-reminder{
+	position: absolute;
+	left: 2px;
+	top: 2px;	
 }
 </style>

@@ -13,16 +13,10 @@
 
 			<base-input
 				v-model="model.date"
-				type="date"
+				type="datetime-local"
 				:label="$t('form.date')"
 				:rules="'required'"
-			/>
-
-			<base-input
-				v-model="model.time"
-				type="time"
-				:label="$t('form.time')"
-				:rules="'required'"
+				:value="date"
 			/>
 
 			<base-input
@@ -60,18 +54,17 @@
 		data() {
 			return {
 				model: {
-					city: '',
+					city: 'Guarulhos',
 					date: '',
-					time: '',
 					color: '#3c8dbc',
-					name: '',
+					name: 'Teste',
 				},
 			}
 		},
 		props: {
 			date: {
 				type: String,
-				default: moment().format('YYYY-MM-DD'),
+				default: moment().format('YYYY-MM-DDTHH:mm'),
 			},
 		},
 		mounted() {
@@ -79,7 +72,9 @@
 		},
 		methods: {
 			submit() {
-				this.$store.dispatch(Actions.REMINDER_CREATE, new ReminderModel(this.model))
+				const reminder = new ReminderModel(this.model)
+				this.$store.dispatch(Actions.REMINDER_CREATE, reminder)
+				this.$emit(Events.CREATED_REMINDER, reminder)
 				this.close()
 			},
 			close() {

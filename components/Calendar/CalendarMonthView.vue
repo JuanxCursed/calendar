@@ -109,15 +109,22 @@
 				this.$emit(Events.HIDE_REMINDER_FORM)
 			},
 			getRemindersForDay(day) {
-				return this.reminders.filter((reminder) => {
-					return moment(reminder.date).format('L') === day.format('L')
-				})
+				return this.reminders
+					.sort((a, b) => moment(a.date) - moment( b.date))
+					.filter((reminder) => moment(reminder.date).format('L') === day.format('L'))
 			},
 		},
 	}
 </script>
 
 <style scoped>
+.calendar-month-header {
+	display: flex;
+	justify-content: space-between;
+	background-color: var(--background-color);
+	padding: var(--grid-padding);
+}
+
 .calendar-month {
 	position: relative;
 	background-color: var(--grey-200);
@@ -135,7 +142,7 @@
 .day-of-week,
 .days-grid {
 	display: grid;
-	grid-template-columns: repeat(7, 1fr);
+	grid-template-columns: repeat(7, minmax(0, 1fr));
 	padding: var(--grid-padding);
 }
 
