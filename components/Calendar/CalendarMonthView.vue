@@ -21,8 +21,9 @@
 				:day="day.date"
 				:is-current-month="day.isCurrentMonth"
 				:is-today="day.date.format('L') === today.format('L')"
-				@selectedDate="showReminderForm"
 				:reminders="day.reminders"
+				@selectedDate="showReminderForm"
+				@selectReminder="selectReminder"
 			/>
 		</ol>
 	</div>
@@ -110,8 +111,13 @@
 			},
 			getRemindersForDay(day) {
 				return this.reminders
-					.sort((a, b) => moment(a.date) - moment( b.date))
-					.filter((reminder) => moment(reminder.date).format('L') === day.format('L'))
+					.sort((a, b) => moment(a.date) - moment(b.date))
+					.filter(
+						(reminder) => moment(reminder.date).format('L') === day.format('L')
+					)
+			},
+			selectReminder(reminder) {
+				this.$emit(Events.SELECTED_REMINDER, reminder)
 			},
 		},
 	}

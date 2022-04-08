@@ -1,5 +1,5 @@
 <template>
-	<li		
+	<li
 		class="calendar-day"
 		:class="{
 			'not-current': !isCurrentMonth,
@@ -7,10 +7,11 @@
 		}"
 	>
 		<span class="date-label">{{ day.date() }}</span>
-		<reminder 
-			v-for="(reminder,i) in reminders"
+		<reminder
+			v-for="(reminder, i) in reminders"
 			:key="`${i}-${reminder.time}=${reminder.date}`"
 			:reminder="reminder"
+			@selectReminder="selectReminder"
 		></reminder>
 		<button class="secundary icon new-reminder" @click="selectDate(day)">
 			<i class="fa fa-plus"></i>
@@ -45,6 +46,9 @@
 			},
 		},
 		methods: {
+			selectReminder(reminder) {
+				this.$emit(Events.SELECTED_REMINDER, reminder)
+			},
 			selectDate(date) {
 				this.$emit(Events.SELECTED_DATE, date)
 			},
@@ -87,9 +91,9 @@
 	font-weight: 600;
 	background-color: var(--primary-color);
 }
-.new-reminder{
+.new-reminder {
 	position: absolute;
 	left: 2px;
-	top: 2px;	
+	top: 2px;
 }
 </style>
