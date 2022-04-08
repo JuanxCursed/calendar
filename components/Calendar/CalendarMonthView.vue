@@ -35,7 +35,7 @@
 	import CalendarDateIndicator from './CalendarDateIndicator'
 	import CalendarDateSelector from './CalendarDateSelector'
 	import CalendarWeekdays from './CalendarWeekdays'
-	import Events from '../../constants/Events'
+	import Events from '@/constants/Events'
 
 	export default {
 		name: 'CalendarMonthView',

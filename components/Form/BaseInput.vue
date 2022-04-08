@@ -26,7 +26,7 @@
 	</ValidationProvider>
 </template>
 <script>
-	import Events from '../../constants/Events'
+	import Events from '@/constants/Events'
 	export default {
 		name: 'BaseInput',
 		inheritAttrs: false,
