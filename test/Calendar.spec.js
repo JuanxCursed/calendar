@@ -1,3 +1,9 @@
+/**
+ * @NOTE This file has some examples of how to test a Vue component using Jest
+ * and how to test a Vuex store
+ * The candidate must be able to understand the code and write tests for the components
+ */
+
 import { mount, createLocalVue, shallowMount, config } from '@vue/test-utils'
 import Vuex from "vuex"
 import Calendar from '@/components/Calendar/Calendar.vue'
@@ -44,7 +50,7 @@ describe('@/store/reminders', () => {
     let actions
     let mutations
 
-    const cloneStore = {...remindersStore }
+    const cloneStore = { ...remindersStore }
 
     beforeEach(() => {
         actions = cloneStore.actions

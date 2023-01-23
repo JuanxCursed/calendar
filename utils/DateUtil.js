@@ -1,3 +1,9 @@
+/**
+ * @NOTE This class can be also writted as a function using `export default function DateUtil() {}`
+ * or as a function using `export default DateUtil = () => {}`
+ * but I prefer to use classes for better readability, and to avoid the `this` keyword
+ */
+
 class DateUtil {
     constructor(date = new Date(), useParser = false, locale = 'en-US') {
         switch (true) {

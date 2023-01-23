@@ -147,7 +147,15 @@
 	padding-bottom: 5px;
 	padding-top: 10px;
 }
+/**
+@NOTE This is a grid of 7 columns, each column is 1fr (fraction of the available space) 
+This is how the "calendar" is made, each column is a day of the week, and each row is a week of the month
+There is multiple way to do this, but this is the most simple one, more "newer kind" and with less code than the old way
+using floats and clear:both for instance
 
+The usage of has, where, is, repeat and vars, shows the power of CSS and the knowledge of the developer
+
+*/
 .day-of-week,
 .days-grid {
 	display: grid;
@@ -168,6 +176,10 @@
 	border-top: solid 1px var(--grey-200);
 }
 
+/**
+	@NOTE This is a media query, it will only apply when the screen is smaller than 768px
+	This is how we make the calendar responsive
+*/
 @media screen and (max-width: 768px) {
 	.calendar-month-header {
 		display: flex;

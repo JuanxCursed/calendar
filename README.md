@@ -1,5 +1,38 @@
-# Calendar
+# Calendar (Recruitment test)
+This is a pre made sample to test the knowlodge of the developer on these aspects:
+- Vue
+- Routing
+- State management
+- Software Architecture
+- CSS Flex and CSS Grid
+- Sass (Extra)
+- API Communitation
+- Unit and E2E testing
+- Documentation and communication
+- SCM (Git)
 
+## What is expected?
+
+- [ ] Fullfil the missing items in features list
+- [ ] Fetch data from external services
+- [ ] Complete the missing features on the stores
+- [ ] Fix the CSS issue that is breaking the layout visualy
+- [ ] Write Unit tests for the store, components and utils
+- [ ] Complete the missing form element
+- [ ] Write the form validation
+- [ ] Write the missing docs on readme.md
+- [ ] DO NOT hardcode the environment variable
+
+### What and how avaliate
+
+This will depends on the developers level and how the problems is solved.
+- If the candidate create a service file to communicate with the external services, if instead he code this logic inside the component itself this will be a drawback, cause that way we are accoupling the service into the component, so, the business logic will be attached to it.
+- If the candidate create a model, this will keep the component clean and more readable. Also all the values are parsed, defaulted or validated by the model, keeping the business logic isolated.
+
+For more details look along the code places where we have the `@NOTE` notation.
+
+
+<!-- @NOTE the content below is one of the thing that can be done by the candidate as part of documentation -->
 ## Build Setup
 
 ```bash

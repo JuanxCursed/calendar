@@ -16,8 +16,12 @@ export const mutations = {
 
 export const actions = {
     /**
+     * @NOTE It's possible to call external services here, like a backend service, there is multiple way to do it
      * This is how I would do it if I had a backend service making use of this.$repositories injection system
      * but there is no need, since I'm using a fake database for this example with persisting data on cookies
+     * 
+     * Also can be used a "service" layer to make the calls to the backend, but I prefer to use the repositories 
+     * due the simplicity of the project
      */
     // ALL({ commit }) {
     //   const reminder = this.$repositories.reminderRepository.all();

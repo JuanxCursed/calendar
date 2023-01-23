@@ -35,6 +35,11 @@
 	</ValidationProvider>
 </template>
 <script>
+/**
+ * @NOTE - Validations are handled by Vee-Validate
+ * But can be handled by any other validation library or by the component itself
+ * @NOTE - The component is not using the v-model directive because it is not working with the ValidationProvider
+ */
 	import Events from '@/constants/Events'
 	export default {
 		name: 'BaseInput',

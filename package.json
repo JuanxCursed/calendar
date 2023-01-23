@@ -19,7 +19,7 @@
     "core-js": "^3.19.3",
     "nuxt": "^2.15.8",
     "nuxt-i18n": "^6.28.1",
-    "vee-validate": "3.4.13",
+    "vee-validate": "3.4.13", // @NOTE this package is an excelent validation package
     "vue": "^2.6.14",
     "vue-server-renderer": "^2.6.14",
     "vue-template-compiler": "^2.6.14",

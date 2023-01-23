@@ -57,6 +57,9 @@
 </script>
 
 <style scoped>
+/**
+@NOTE Without this relative, the day label will be positioned relative to the body which will break the layout
+ */
 .calendar-day {
 	position: relative;
 	min-height: 100px;
@@ -66,6 +69,9 @@
 	padding: 27px 5px 5px;
 }
 
+/**
+@NOTE This is what defines the position of the day label
+ */
 .calendar-day > .date-label {
 	position: absolute;
 	top: 2px;

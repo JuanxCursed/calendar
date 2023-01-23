@@ -81,6 +81,17 @@
 			}
 		},
 		methods: {
+			/**
+			 * @NOTE - This method is responsible for creating or updating a reminder
+			 * Usage of the model make it possible to use the same form for both actions
+			 * without extra coding, also keep the implementation of the form simple, clear and
+			 * easy to understand.
+			 * 
+			 * If for some reason the form needs to be different for each action, it is possible
+			 * If the backend needs to receive different data for each action, it is possible
+			 * to create a new model for each action, but it is not necessary.
+			 * 
+			 */
 			submit() {
 				const reminder = new ReminderModel(this.model)
 				this.reminder ?
